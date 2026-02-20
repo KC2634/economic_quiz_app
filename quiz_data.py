@@ -21,7 +21,6 @@ def load_questions(filepath="questions.csv"):
                     row["option_c"],
                     row["option_d"],
                 ],
-                "correct": int(row["correct"]) -1
-            })
+                "correct": int(row["correct"])})
 
     return questions
