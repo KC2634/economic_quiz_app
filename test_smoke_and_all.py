@@ -27,6 +27,10 @@ class TestQuiz(unittest.TestCase):
         self.assertTrue(character_check("Jo"))
         self.assertTrue(character_check("Joseph Smith"))
 
+    def test_character_check_unhappy(self):
+        self.assertFalse(character_check("Jess1"))
+        self.assertFalse(character_check("897"))
+
 if __name__ == "__main__":
     unittest.main()  
 
