@@ -248,7 +248,7 @@ class EconomicQuizApp(tk.Tk):
         This function cleans the name using and shows an error message if the name does not adhere to the 4 rules:
         1.Presence check-ensures the name is not blank.
         2.Length check-ensures the name is between 2 and 50 characters.
-        3.Character check-ensure the name does not contain any numbers.
+        3.Character check-ensures the name does not contain any numbers.
         4.Pattern check-ensures the name does not contain any invalid punctuation.
 
         Parameters:
