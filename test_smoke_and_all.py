@@ -24,7 +24,7 @@ class TestQuiz(unittest.TestCase):
         self.assertEqual(clean_name("BON JONES"), "Bon Jones")
     
     def test_character_check_happy(self):
-        self.assertTrue(character_check("Jo")) # tests the name only contains only valid charcters (no numbers)
+        self.assertTrue(character_check("Jo")) # tests the name only contains only valid characters (no numbers)
         self.assertTrue(character_check("Joseph Smith"))
 
     def test_character_check_unhappy(self):
@@ -40,7 +40,7 @@ class TestQuiz(unittest.TestCase):
         self.assertFalse(pattern_check("Jo/C"))
 
     def test_length_check_happy(self):
-        self.assertTrue(length_check("Jo")) # tests the for valid length of the name
+        self.assertTrue(length_check("Jo")) # tests for valid length of the name
         self.assertTrue(length_check("Hanahhhhhhhhhhhhhhhhhhhhhhhhhhhh"))
 
     def test_length_check_unhappy(self):
