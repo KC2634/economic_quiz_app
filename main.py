@@ -1,12 +1,11 @@
-import tkinter as tk # for creating the GUI
-from tkinter import messagebox
+import tkinter as tk # imports tkinter for creating the GUI
+from tkinter import messagebox # imports messagebox for name input
 import csv # to write to csv from main
-from quiz_data import load_questions # for loading the questions
-# utility functions to clean and validate names 👇
-from quiz_utils import clean_name, character_check, length_check, presence_check, pattern_check
-from datetime import datetime # to record a timestamp
+from quiz_data import load_questions # for loading the questions for the question screen
+from quiz_utils import clean_name, character_check, length_check, presence_check, pattern_check # utility functions to clean and validate names
+from datetime import datetime # to record a timestamp in the CSV
 
-BG = "#D70032"
+BG = "#D70032" 
 BUTTON_BG = "#F2F2F2"
 TEXT = "#FFFFFF"
 BUTTON_TEXT = "#111111"
@@ -101,17 +100,21 @@ class EconomicQuizApp(tk.Tk):
             question_number += 1
     
     def handle_submit(self):
+
+        """
+        Builds CSV that the student responses are written to.
+        Saves the students name, date and timestamp, score and responses to each question.
+        """
         
-        skipped_questions = [i + 1 for i, var in enumerate(self.answer_vars) if var.get() == -1]
+        skipped_questions = [i + 1 for i, var in enumerate(self.answer_vars) if var.get() == -1] 
         if skipped_questions:
             missing_str = ", ".join(map(str, skipped_questions))
             messagebox.showwarning(
                 "Incomplete Quiz", 
                 f"Please answer all questions before submitting. Missing questions: {missing_str}"
             )
-            return
-
-
+            return # this brings up an error message if all questions are not answered
+        
         st_name = clean_name(self.name_entry.get())
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -122,7 +125,7 @@ class EconomicQuizApp(tk.Tk):
                 correct_choice = self.questions[i]["correct"]
 
                 if user_choice == correct_choice:
-                    self.score += 1
+                    self.score += 1 # counts the score for quiz
 
             answers = []
             for var in self.answer_vars:
@@ -131,14 +134,14 @@ class EconomicQuizApp(tk.Tk):
             with open("quiz_records.csv", mode="a", newline="", encoding="utf-8") as file:
                 writer = csv.writer(file)
                 writer.writerow([st_name, timestamp, self.score, answers])
-                print("Data successfully written to CSV.")
+                print("Data successfully written to CSV.") # writes to csv and prints this message when successfully written
 
             self.build_thank_you_screen(st_name)
             
             
     def build_thank_you_screen(self, name):
         
-        """Shows the final confirmation screen."""
+        """Shows the final screen."""
 
         self.clear_screen()
 
@@ -152,7 +155,7 @@ class EconomicQuizApp(tk.Tk):
 
         tk.Label(
             self,
-            text=f"{name}, your score is: {self.score}/{len(self.questions)}",
+            text=f"{name}, your score is: {self.score}/{len(self.questions)}", # produces users score for quiz
             font=("Segoe UI", 24),
             wraplength=500,
             justify="center",
@@ -179,7 +182,7 @@ class EconomicQuizApp(tk.Tk):
             command=self.destroy
         ).pack(pady=30)
         
-        self.logo_image = tk.PhotoImage(file="Logo.png")
+        self.logo_image = tk.PhotoImage(file="Logo.png") # adds company logo to thank you screen
         self.logo_image = self.logo_image.zoom(2,2)
         self.logo_image = self.logo_image.subsample(2,2)
         self.logo_label = tk.Label(self, image=self.logo_image, bg=BG)

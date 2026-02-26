@@ -33,3 +33,7 @@ def character_check(name: str) -> bool:
 
 def pattern_check(name):
     return bool(re.fullmatch(r'[a-zA-Z-\s]+', name))
+
+    """
+    Checks that the name contains only letters, spaces or hyphens.
+    """

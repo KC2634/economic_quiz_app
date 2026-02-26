@@ -3,8 +3,8 @@ import csv # for reading the CSV file
 def load_questions(filepath="questions.csv"):
     
     """
-    Load questions from a CSV file and return a list of question dictionaries.
-    The output depends on external state (the contents of questions.csv) - not pure.
+    Load questions from questions CSV file and return a list of question dictionaries.
+    The output depends on the contents of questions.csv, therefore not pure.
     If the file changes, the function returns different results for the same input.
     """
     
