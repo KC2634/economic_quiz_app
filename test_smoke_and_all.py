@@ -39,6 +39,10 @@ class TestQuiz(unittest.TestCase):
         self.assertFalse(pattern_check("Anna]k"))
         self.assertFalse(pattern_check("Jo/C"))
 
+    def test_length_check_happy(self):
+        self.assertTrue(length_check("Jo"))
+        self.assertTrue(length_check("Hanahhhhhhhhhhhhhhhhhhhhhhhhhhhh"))
+
 if __name__ == "__main__":
     unittest.main()  
 
