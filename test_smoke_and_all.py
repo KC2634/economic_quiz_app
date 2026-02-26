@@ -18,6 +18,10 @@ class TestQuiz(unittest.TestCase):
 
     def test_presence_check_happy(self):
         self.assertTrue(presence_check("Jo"))
+
+    def test_clean_name(self):
+        self.assertEqual(clean_name("  josh done  "), "Josh Done")
+        self.assertEqual(clean_name("BON JONES"), "Bon Jones")
     
 
 if __name__ == "__main__":
