@@ -23,6 +23,9 @@ class TestQuiz(unittest.TestCase):
         self.assertEqual(clean_name("  josh done  "), "Josh Done")
         self.assertEqual(clean_name("BON JONES"), "Bon Jones")
     
+    def test_character_check_happy(self):
+        self.assertTrue(character_check("Jo"))
+        self.assertTrue(character_check("Joseph Smith"))
 
 if __name__ == "__main__":
     unittest.main()  
