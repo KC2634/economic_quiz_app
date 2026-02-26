@@ -15,6 +15,9 @@ class TestQuiz(unittest.TestCase):
     def test_load_questions_runs(self):
         questions = load_questions()
         self.assertIsNotNone(questions)
+
+    def test_presence_check_happy(self):
+        self.assertTrue(presence_check("Jo"))
     
 
 if __name__ == "__main__":
