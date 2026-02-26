@@ -256,7 +256,7 @@ class EconomicQuizApp(tk.Tk):
 
         Returns:
         bool: The function returns true if the name is valid, False if the name is invalid. 
-        This is not a pure fucntion because it depends on the message box.
+        This is not a pure function because it depends on the message box.
 
         """
         valid = True
