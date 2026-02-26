@@ -15,10 +15,20 @@ questions = load_questions()
 class EconomicQuizApp(tk.Tk):
     
     """
-    A class that represents the quiz application.
+    A class that represents the economic quiz application.
+
     """
 
     def __init__(self, questions):
+        """"
+        Constructs all the necessary attributes for the app and name box.
+
+        Parameters:
+        self.name (str): The widget containing the user's name.
+        self.questions (list): A list of dictionaries containing 'question' and 'options'.
+        self.answer_vars (list): A list of tk.IntVar to store the user's chosen answers.
+
+        """
         super().__init__()
         self.title("Economic Quiz")
         self.questions = questions
@@ -63,7 +73,15 @@ class EconomicQuizApp(tk.Tk):
     def build_question_screen(self):
         
         """
-        Builds the question section.
+        Builds the question section of the app.
+
+        The function takes the questions from the quiz_data file and populates the screen with the question and the multiple answers available. 
+        It asigns a questin number to the question and radio buttons for the answers. It also tracks the user responses
+
+        Parameters:
+        self.questions (list): A list of dictionaries containing 'question' and 'options'.
+        self.answer_vars (list): A list of tk.IntVar to store the user's chosen answers.
+
         """
 
         question_number = 1
@@ -102,8 +120,23 @@ class EconomicQuizApp(tk.Tk):
     def handle_submit(self):
 
         """
-        Builds CSV that the student responses are written to.
-        Saves the students name, date and timestamp, score and responses to each question.
+        Builds the CSV that the user's responses are written to.
+
+        This function carrys out three actions:
+        1. Validation-ensures all questions have been answered.
+        2. Score-Counts user selections and work out their score against the correct answers.
+        3. Storage-Stores the users name, date, time, score and answers chosen to the quiz_records CSV.
+
+        Parameters:
+        self.answers_vars (list): Tracks the answers chosen.
+        self.questions (list): Recalls on the CSV that contains the correct answers.
+        self.name_entry (tk.Entry): The widget containing the user's name.
+
+        Returns:
+        Returns an error message if questions are not answered.
+        Writes a new row to the quiz_records CSV.
+        Switches the first screen to the Thank You screen.
+
         """
         
         skipped_questions = [i + 1 for i, var in enumerate(self.answer_vars) if var.get() == -1] 
@@ -141,7 +174,26 @@ class EconomicQuizApp(tk.Tk):
             
     def build_thank_you_screen(self, name):
         
-        """Shows the final screen."""
+        """
+        Shows the final screen.
+        
+        This function builds the Thank You screen where the user is thanked for submitting their answers,
+        their score is displayed and they are praised for their hard work. 
+        This screen also displays a quit button and the company logo.
+        
+        Parameters:
+        self.score (int): Counts the number of correct answers chosen.
+        self.questions (list): Recalls on the CSV that contains the correct answers.
+        self.logo (tk.PhotoImage): Recalls on the Logo png file and displays on the thank you screen.
+
+        Returns:
+        "Thank you for submitting your answers, {name}!".
+        "{name}, your score is: {self.score}/{len(self.questions)}".
+        "Well done, keep up the hard work!"
+        Displays the quit button.
+        Displays the logo image below.
+
+        """
 
         self.clear_screen()
 
@@ -192,7 +244,20 @@ class EconomicQuizApp(tk.Tk):
         
         """
         Validates the cleaned name and shows an error message if invalid.
-        Returns True if the name is valid. Not pure because depends on messagebox.
+
+        This function cleans the name using and shows an error message if the name does not adhere to the 4 rules:
+        1.Presence check-ensures the name is not blank.
+        2.Length check-ensures the name is between 2 and 50 characters.
+        3.Character check-ensure the name does not contain any numbers.
+        4.Pattern check-ensures the name does not contain any invalid punctuation.
+
+        Parameters:
+        cleaned_name (str): The name after the white spaces has been removed and the name has been correctly capitalised.
+
+        Returns:
+        bool: The function returns true if the name is valid, False if the name is invalid. 
+        This is not a pure fucntion because it depends on the message box.
+
         """
         valid = True
 
@@ -228,7 +293,12 @@ class EconomicQuizApp(tk.Tk):
 
     def clear_screen(self):
         
-        """Removes all widgets from the window."""
+        """
+        Removes all widgets from the window.
+        
+        This fucntions removes all widgets from the screen so the user knows they are done with the quiz.
+        
+        """
         
         for widget in self.winfo_children():
             widget.destroy()
