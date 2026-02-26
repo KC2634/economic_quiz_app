@@ -35,6 +35,10 @@ class TestQuiz(unittest.TestCase):
         self.assertTrue(pattern_check("Anna-Marie"))
         self.assertTrue(pattern_check("Jo-C"))
 
+    def test_symbol_check_unhappy(self):
+        self.assertFalse(pattern_check("Anna]k"))
+        self.assertFalse(pattern_check("Jo/C"))
+
 if __name__ == "__main__":
     unittest.main()  
 
