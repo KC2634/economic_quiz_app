@@ -1,6 +1,6 @@
 # Economic Quiz App
 
-##Introduction
+## Introduction
 
 I work at UK Greetings, we supply greetings cards to retailers across the UK. I work in the Consumer Insight department where we look at how economic factors correlate to the greetings card market. Knowledge on what is happening in the UK economy is imperative for our team. There are lots of economic jargon used, this can be tricky to remember what each economic indicator measures. Therefore, I decided to develop an Economic Quiz app to test my team on economic measures.
 
@@ -30,5 +30,47 @@ I created a persona file (Figure 2) to document an intended user, this allowed m
 
 ### Functional and Non-functional Requirements
 #### Functional Requirements
+![Figure 3:Functional Requirements](Functional_requirments.png)
 
+**Figure 3:** Functional Requirements
+
+#### Non-functional Requirements
+![Figure 4:Non-functional Requirements](non_functional_requirments.png)
+
+**Figure 4:** Non-functional Requirements
+
+### Tech Stack Outline
+•	Python 3 - programming language used.
+•	Tkinter – desktop graphical user interface.
+•	csv – local data storage.
+•	re – regular expression for input validation.
+•	datetime – timestamp generation.
+•	unittest – automated unit testing.
+•	message box – widget that allows user input for name.
+
+### Code Design Document
+This is a class diagram that demonstrates the relationship between the parent and child.
+![Figure 5:Class diagram of app](Class_diagram.png)
+
+**Figure 5:** Class Diagram
+
+
+## Development Section
+
+I am going to display my development process as technical documentation as it delivers the same steps.
+
+### Technical Documentation 
+
+#### Introduction
+This document outlines the specifications and requirements to run the Economic Quiz app. The application is a desktop GUI:
+•	Loads questions from a CSV file.
+•	Presents them on the GUI.
+•	Validates the input.
+•	Stores the data.
+
+#### Intended user
+The intended user are colleagues who need a quick review on economic metrics. Displaying the score gives real time feedback on performance so the user can practice on areas of improvement.
+
+#### How to run the app
+The Economic Quiz app requires Python 3 to run.
 
