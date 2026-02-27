@@ -40,19 +40,19 @@ I created a persona file (Figure 2) to document an intended user, this allowed m
 **Figure 4:** Non-functional Requirements
 
 ### Tech Stack Outline
-•	Python 3 - programming language used.
+•	[Python 3](https://docs.python.org/3/) - programming language used.
 
-•	Tkinter – desktop graphical user interface.
+•	[Tkinter](https://docs.python.org/3/library/tkinter.html) – desktop graphical user interface.
 
-•	csv – local data storage.
+•	[csv](https://docs.python.org/3/library/csv.html) – local data storage.
 
-•	re – regular expression for input validation.
+•	[re](https://docs.python.org/3/library/re.html) – regular expression for input validation.
 
-•	datetime – timestamp generation.
+•	[datetime](https://docs.python.org/3/library/datetime.html) – timestamp generation.
 
-•	unittest – automated unit testing.
+•	[unittest](https://docs.python.org/3/library/unittest.html) – automated unit testing.
 
-•	message box – widget that allows user input for name.
+•	[message box](https://docs.python.org/3/library/tkinter.messagebox.html#module-tkinter.messagebox) – widget that allows user input for name.
 
 
 ### Code Design Document
@@ -137,7 +137,7 @@ def load_questions(filepath="questions.csv"):
 ```
 If you added another answer option, you need to add this after ‘row["option_d"],’ in the same formatting but change to option_e.
 
-3.	Create a main.py module and import tkinter as tk (following the tkinter documentation) for creating the GUI. Import the message box for the name input, import CSV to write the input data from main to a csv file. Then import the load_questions function from quiz_data:
+3.	Create a main.py module and import tkinter as tk (following the [tkinter documentation](https://docs.python.org/3/library/tkinter.html)) for creating the GUI. Import the message box for the name input, import CSV to write the input data from main to a csv file. Then import the load_questions function from quiz_data:
    
 ```python
 import tkinter as tk # imports tkinter for creating the GUI
@@ -461,6 +461,6 @@ Make sure all questions are answered, or an error message will be displayed.
 7.	Press quit.
 
 ## Evaluation Section
-A positive of my development was that it included an image of my company’s logo which adheres to my non-functional requirements and company needs. I would like to add the logo to all the screens, so it is more comprehensive and ensures the user knows the quiz relates to UKG. I would investigate more fonts using the tkinter website and read their documentation on how to install them. In the future I would like to test the app on my colleagues and get user feedback to see how the app could be user friendly and use their data to create visualisations.
+A positive of my development was that it included an image of my company’s logo which adheres to my non-functional requirements and company needs. I would like to add the logo to all the screens, so it is more comprehensive and ensures the user knows the quiz relates to UKG. I would investigate more fonts using the tkinter website and read their [documentation](https://docs.python.org/3/library/tkinter.font.html#module-tkinter.font) on how to install them. In the future I would like to test the app on my colleagues and get user feedback to see how the app could be user friendly and use their data to create visualisations.
 
 
