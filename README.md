@@ -74,3 +74,7 @@ The intended user are colleagues who need a quick review on economic metrics. Di
 #### How to run the app
 The Economic Quiz app requires Python 3 to run.
 
+
+## Testing Section
+Once I developed my app, I did testing to ensure all code is running correctly. I first did manual tests on the name input. I did this by manually inputting different names with different formats into the message box to see if the error message appeared. As seen in Figure 6 most tests passed but the length check did not pass, so I went into my quiz_utils folder and realised my minimum length was actually 0 so I changed that to 2. I tested again and it passed. The skipped question test failed, there was no error message in my main.py for this so I added the skipped_question code. Once added the test passed.
+
