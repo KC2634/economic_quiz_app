@@ -417,14 +417,14 @@ def test_symbol_check_unhappy(self):
 ```
 
 ## Testing Section
-Once I developed my app, I did testing to ensure all code is running correctly. I first did manual tests on the name input. I did this by manually inputting different names with different formats into the message box to see if the error message appeared. As seen in Figure 6 most tests passed but the length check did not pass, so I went into my quiz_utils folder and realised my minimum length was actually 0 so I changed that to 2. I tested again and it passed. The skipped question test failed, there was no error message in my main.py for this so I added the skipped_question code. Once added the test passed.
+Once I developed my app, I did testing to ensure all code is running correctly. I first did manual tests on the name input. I did this by manually inputting different names with different formats into the message box to see if the error message appeared. As seen in Figure 7 most tests passed but the length check did not pass, so I went into my quiz_utils folder and realised my minimum length was actually 0 so I changed that to 2. I tested again and it passed. The skipped question test failed, there was no error message in my main.py for this so I added the skipped_question code. Once added the test passed.
 
 ### Manual Testing
 ![Figure 7:Table of my maual testing](manual_testing.png)
 
 **Figure 7:** Manual Tests
 
-Manual tests are not robust enough on their own to ensure code has no errors. So, I used Unit testing on my local computer to ensure my quiz_utils functions were correct. I first ran a smoke test that passed, then I ran a failing smoke test to ensure that didn’t pass so I knew the unittest was working. I then fixed that smoke test and carried out a series of test cases to verify my code is correct. I then used continuous integration on GitHub. I first created a .yml file in a workflows files. Then I uploaded my files to Github and used my test_smoke_and_all module to run my tests. I followed the same process of carrying out the smoke test first and then tested all my other quiz checks. Below are screenshots of all my passing and failing unittests from Github.
+Manual tests are not robust enough on their own to ensure code has no errors. So, I used Unit testing on my local computer to ensure my quiz_utils functions were correct. I first ran a smoke test that passed, then I ran a failing smoke test to ensure that didn’t pass so I knew the unittest was working. I then fixed that smoke test and carried out a series of test cases to verify my code is correct as seen in Figure 8. I then used continuous integration on GitHub. I first created a .yml file in a workflows files. Then I uploaded my files to Github and used my test_smoke_and_all module to run my tests. I followed the same process of carrying out the smoke test first and then tested all my other quiz checks. Figure 9 is a screenshot of all my passing and failing unittests from Github.
 
 ### Unit Testing
 ![Figure 8:Screenshot of my unittets running on local computer](unitest_locally.png)
