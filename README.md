@@ -41,12 +41,19 @@ I created a persona file (Figure 2) to document an intended user, this allowed m
 
 ### Tech Stack Outline
 •	Python 3 - programming language used.
+
 •	Tkinter – desktop graphical user interface.
+
 •	csv – local data storage.
+
 •	re – regular expression for input validation.
+
 •	datetime – timestamp generation.
+
 •	unittest – automated unit testing.
+
 •	message box – widget that allows user input for name.
+
 
 ### Code Design Document
 This is a class diagram that demonstrates the relationship between the parent and child.
@@ -63,10 +70,15 @@ I am going to display my development process as technical documentation as it de
 
 #### Introduction
 This document outlines the specifications and requirements to run the Economic Quiz app. The application is a desktop GUI:
+
 •	Loads questions from a CSV file.
+
 •	Presents them on the GUI.
+
 •	Validates the input.
+
 •	Stores the data.
+
 
 #### Intended user
 The intended user are colleagues who need a quick review on economic metrics. Displaying the score gives real time feedback on performance so the user can practice on areas of improvement.
@@ -134,7 +146,7 @@ import csv # to write to csv from main
 from quiz_data import load_questions # for loading the questions for the question screen
 ```
 
-5.	Create EconomicQuizApp class:
+4.	Create EconomicQuizApp class:
 
 ```python
 class EconomicQuizApp(tk.Tk):
@@ -143,6 +155,7 @@ class EconomicQuizApp(tk.Tk):
     A class that represents the economic quiz application.
 
     """
+```
    
 Creating the class allows you to bundle functions together that define the structure and behaviour of the objects it inherits. 
 
@@ -162,7 +175,7 @@ Creating the class allows you to bundle functions together that define the struc
 ```
 The function is defined with ‘self’ which represents the object of the class, which allows the function to work for the class when the window is open. In this function create_name_label and pack this to the GUI so it appears on the display. Also build and pack the submit button.
 
-6.	Builds the question screen of the app.
+6.	Build the question screen of the app.
    
 ```python
 def build_question_screen(self):
@@ -213,7 +226,9 @@ def build_question_screen(self):
             question_number += 1
 ```
 This function takes the questions dictionary from the quiz_data file and populates the screen with the questions and the answers. 
+
 Using initializer of ‘question_number = 1’ which is starting value for the question numbers. Then using an f-string shows the question number to make the quiz easier to follow. Wrapping the text ensures all the questions fit on the display. Using a similar method, create my options_value variable which displays the options to the questions starting with 0. 
+
 Finally for this function using the bottom line of code shows all the questions not just question 1.
 
 7.	Create the handle_submit function which ensures all questions have been answered, counts the score and stores the users name, date, time, score and answers chosen to a csv file. Using the below code to create the skipped_questions error.
@@ -236,7 +251,170 @@ with open("quiz_records.csv", mode="a", newline="", encoding="utf-8") as file:
                 writer.writerow([st_name, timestamp, self.score, answers])
                 print("Data successfully written to CSV.") 
 ```
+9.	The next function is build_thank_you_screen. This function builds the Thank You screen and the user is thanked for submitting their answers, their score out of 3 (the number of questions) is displayed. Usingt the code below to create the score, it takes the self.score instance attribute created in the handle_submit function and the length of the self.questions attribute and produces the users score.
+    
+```python
+text=f"{name}, your score is: {self.score}/{len(self.questions)}"
+```
+This function also deploys a quit button (created using tk.Button ) and an image of the UK Greetings logo. Save your image in the folder then use the code below to deploy this by using tk.PhotoImage (an image object) which pulls from the image file. Then use .zoom to enlarge the image so it is easier for the user to see and pack this so it is visible on the display when deployed. 
 
+```python
+self.logo_image = tk.PhotoImage(file="Logo.png") # adds company logo to thank you screen
+        self.logo_image = self.logo_image.zoom(2,2)
+        self.logo_image = self.logo_image.subsample(2,2)
+        self.logo_label = tk.Label(self, image=self.logo_image, bg=BG)
+        self.logo_label.pack(pady=20)
+```
+
+10.	Create the quiz_utils module and import re. This is a python module used to check input matches the specified format, this is used to check the name does not contain numbers. In this module create a series of functions which check the name input:
+•	clean_name
+```python
+def clean_name(name):
+    """
+    Cleans the name.
+    
+    Cleans the name by removing whitespace and converting to title case.
+    That is a Pure function.
+
+    Parameters:
+    name(str): The user's name inputed in the messagebox.
+
+    Returns:
+    clean_name: Returns 'name' without whitespace and converts to title case
+
+    """
+    return name.strip().title()
+```
+•	presence_check
+```python
+def presence_check(name: str) -> bool:
+    
+    """
+    Checks that a name has been provided.
+
+    This functions checks the name box is not blank.
+    This function is Pure. 
+
+    Parameters:
+    name(str): The user's name inputed in the messagebox.
+    
+    Returns:
+    bool: True if the name is not empty, False if the name is empty
+
+    """
+    return bool(name)
+```
+•	length_check
+```python
+def length_check(name: str) -> bool:
+    
+    """
+    Checks that the name length is within an acceptable range.
+
+    This function checks that the name length is between 2 and 50 characters.
+    This is a Pure function. 
+    
+    Parameters:
+    name(str): The user's name inputed in the messagebox.
+    
+    Returns:
+    bool: True if the name length is between 2 and 50 characters, False if the name is 1 character or more than 50 characters.
+
+    """
+    return 2 <= len(name) <= 50
+```
+•	character_check
+```python
+def character_check(name: str) -> bool:
+    
+    """
+    Checks that the name contains only valid characters.
+
+    This function checks that the name does not contain any numbers.
+    This is a Pure function. 
+    
+    Parameters:
+    name(str): The user's name inputed in the messagebox.
+
+    Returns:
+    bool: True if the name has no numbers, False if the name contains any numbers.
+    """
+    return not re.search(r"\d", name)
+```
+•	pattern_check
+```python
+def pattern_check(name):
+    """
+    Checks that the name contains no invalid punctuation.
+
+    This function checks the name does not contain any other punctuation other than hyphens.
+
+    Parameters:
+    name(str): The user's name inputed in the messagebox.
+
+    Returns:
+    bool: Returns True if the function does not contain any punctuation other than hyphens, False if the name contains other punctuation.
+
+    """
+    return bool(re.fullmatch(r'[a-zA-Z-\s]+', name))
+```
+All these functions are pure because the input is the same as the output and does not change the original input passed through. 
+
+11.	Import these functions to main.py and create validate_name_with_message function. This function cleans the name inputted and displays an error message if it does not adhere to the 4 rules. 
+
+12.	The last function is clear_screen which removes all widgets from the screen so the user knows they have complete the quiz.
+```python
+def clear_screen(self):
+        
+        """
+        Removes all widgets from the window.
+        
+        This fucntions removes all widgets from the screen so the user knows they are done with the quiz.
+        
+        """
+        
+        for widget in self.winfo_children():
+            widget.destroy()
+```
+13.	Use the below conditional statement to check that the code is running, if __name__ was not set to “__main__” the app would not run.
+```python
+if __name__ == "__main__":
+    app = EconomicQuizApp(questions)
+    app.mainloop()
+```
+
+#### Unit Testing
+1.	To ensure the code has no errors, run tests locally. Create a file called test_smoke_and_all.py and import unittest, quiz_data and quiz_utils:
+```python   
+import unittest # a testing framework
+from quiz_data import load_questions # converts to dict
+from quiz_utils import clean_name, presence_check, character_check, pattern_check, length_check #cleans the name, checks the presence, validates the name, checks the patterns are valid and checks the length of the name
+```
+2. Create a class TestSmoke which inherits the unittest. Doing the smoke test ensures unittest is running. The code below shows that 2+2 equals 4 and that 6 does not equal 1. Run this on your local computer and the test comes back ok. This means the unittest is working. 
+```python
+class TestSmoke(unittest.TestCase):
+
+    def test_ut_works(self):
+        self.assertEqual(2+2,4)
+        self.assertNotEqual(6,1)
+if __name__ == "__main__":
+    unittest.main()  
+```
+3. Create another class TestQuiz. For each of the quiz utils, test happy and unhappy functions to ensure the code is correct.
+
+Below is a happy function which passed the test because the code states that the value ‘Anne-Marie’ is true for our function we created in the quiz_utils file.
+```python
+def test_symbol_check_happy(self):
+        self.assertTrue(pattern_check("Anna-Marie")) # tests the name only contains valid punctuation
+        self.assertTrue(pattern_check("Jo-C"))
+```
+
+This unhappy function below shows that the name ‘Anna]k’ is false because it passed the unittest. Repeat this for every pure function to ensure the code is correct.
+```python 
+def test_symbol_check_unhappy(self):
+        self.assertFalse(pattern_check("Anna]k")) # false test for invalid punctuation
+        self.assertFalse(pattern_check("Jo/C"))
+```
 
 ## Testing Section
 Once I developed my app, I did testing to ensure all code is running correctly. I first did manual tests on the name input. I did this by manually inputting different names with different formats into the message box to see if the error message appeared. As seen in Figure 6 most tests passed but the length check did not pass, so I went into my quiz_utils folder and realised my minimum length was actually 0 so I changed that to 2. I tested again and it passed. The skipped question test failed, there was no error message in my main.py for this so I added the skipped_question code. Once added the test passed.
