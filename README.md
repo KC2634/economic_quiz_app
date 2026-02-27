@@ -436,11 +436,22 @@ Manual tests are not robust enough on their own to ensure code has no errors. So
 
 ## Documentation Section
 ### User Documentation
-1.	To open the app, press the run python button in the main.py file.
-2.	When the app appears on the screen, input your name in the message box. 
+1.	To open the app, press the run python button in the main.py file as seen in Figure 10.
+
+![Figure 10:Screenshot of run python buttons](python_play.png)
+
+**Figure 10:** Run Python Button
+
+2.	When the app appears on the screen as seen in Figure 11.
+Input your name in the message box. 
 Your name cannot contain numbers, any punctuation other than hyphens.
 It must be between 2 and 50 characters and cannot be blank.
 If your name is outside these parameters an error message will display.
+
+![Figure 11:Screenshot of Economic Quiz App Display](app_display.png)
+
+**Figure 11:** Economic Quiz App Display
+
 3.	Read question 1 and choose the correct answer from the 4 options. 
 Only 1 answer is correct. 
 4.	Then repeat for questions 2 and 3.
