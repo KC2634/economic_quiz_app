@@ -56,7 +56,7 @@ I created a persona file (Figure 2) to document an intended user, this allowed m
 
 
 ### Code Design Document
-This is a class diagram that demonstrates the relationship between the parent and child.
+This is a class diagram that demonstrates the relationship between the parent (EconomicQuizApp) and child (tk.Tk).
 ![Figure 5:Class diagram of app](Class_diagram.png)
 
 **Figure 5:** Class Diagram
@@ -441,13 +441,13 @@ Manual tests are not robust enough on their own to ensure code has no errors. So
 Your name cannot contain numbers, any punctuation other than hyphens.
 It must be between 2 and 50 characters and cannot be blank.
 If your name is outside these parameters an error message will display.
-4.	Read question 1 and choose the correct answer from the 4 options. 
+3.	Read question 1 and choose the correct answer from the 4 options. 
 Only 1 answer is correct. 
-5.	Then repeat for questions 2 and 3.
-6.	Press the submit button. 
+4.	Then repeat for questions 2 and 3.
+5.	Press the submit button. 
 Make sure all questions are answered, or an error message will be displayed.
-7.	Another screen will appear displaying your score out of 3.
-8.	Press quit.
+6.	Another screen will appear displaying your score out of 3.
+7.	Press quit.
 
 ## Evaluation Section
 A positive of my development was that it included an image of my company’s logo which adheres to my non-functional requirements and company needs. I would like to add the logo to all the screens, so it is more comprehensive and ensures the user knows the quiz relates to UKG. I would investigate more fonts using the tkinter website and read their documentation on how to install them. In the future I would like to test the app on my colleagues and get user feedback to see how the app could be user friendly and use their data to create visualisations.
