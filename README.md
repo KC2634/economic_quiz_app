@@ -18,9 +18,17 @@ Figure 1 shows the Figma wireframe used at the beginning of the design stage of 
 This Figma was used to display the screen layout, input validation and flow before implementation. It does not represent the final interface of the app; I adjusted based on the screen layout present with a laptop.
 
 ![Figure 1: Wireframe demonstrating the intended user journey](Figma.png)
+**Figure 1:** Wireframe
 
 ### Persona File
 
 I created a persona file (Figure 2) to document an intended user, this allowed me to think further about the needs of the user. For example, I ensured my app was able to be displayed on a laptop screen as I know my intended user uses a laptop. This adheres to the user and business needs.
 
-![Figure 2:](Persona Profile.png)
+![Figure 2:Persona Profile of intended user](Persona_Profile.png)
+![Figure 2:Persona Profile of intended user](Persona_Profile_Interests.png)
+**Figure 2:** Persona File
+
+### Functional and Non-functional Requirements
+#### Functional Requirements
+
+
