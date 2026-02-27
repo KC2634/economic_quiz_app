@@ -73,6 +73,10 @@ The intended user are colleagues who need a quick review on economic metrics. Di
 
 #### How to run the app
 The Economic Quiz app requires Python 3 to run.
+1.	Firstly, create the questions CSV file and use the format:
+question,option_a,option_b,option_c,option_d,correct
+This displays the question, answer options and the correct answer which should be displayed as a number between 0 and 3. To add more options, add ‘option_e’ after ‘option_d’. 
+You want to input your questions, answers and correct answers in this format making sure to not include unwanted spaces between the variables. Your CSV should look like this:
 
 
 ## Testing Section
