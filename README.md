@@ -1,1 +1,1 @@
-# economic_quiz_app
+# Economic Quiz App
